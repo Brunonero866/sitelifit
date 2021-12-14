@@ -32,28 +32,57 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.js"></script>
 
 
-<!-- Facebook Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '272423818199014');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=272423818199014&ev=PageView&no=1"</noscript>
-<!-- End Facebook Pixel Code -->
+<style>
+    /* Navbar */
+
+#navbar {
+    text-align: center;
+    color: #fff;
+    background-color: #008a63;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    z-index: 99999;
+    width: 100%;
+}
+
+#location {
+    color: #3EA0FF;
+    font-weight: 600;
+}
+</style>
 
 </head>
 <!-- head -->
 <!-- head -->
 
 <body>
+
+    <script>
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://wtfismyip.com/json', true);
+    
+        request.onload = function () {
+            if (this.status >= 200 && this.status < 400) {
+                var data = JSON.parse(this.response);
+                let output = data.YourFuckingLocation.replace(/\,.+/g, "$'");
+                document.getElementById("cidade").innerHTML = output;
+            } else {}
+        };
+        request.onerror = function () {};
+        request.send();
+    </script>
+
+    <section id="navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    Frete grátis para <span id="cidade"></span> e região!
+                </div>
+            </div>
+        </div>
+    </section>
 
     <span itemprop="image" itemscope="" itemtype="image/jpeg"> 
         <link itemprop="url" href="#"> 
